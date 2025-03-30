@@ -55,9 +55,7 @@ class Timer {
       onClose: (selectedDates) => {
         const selectedDate = selectedDates[0];
         if (selectedDate < new Date()) {
-          iziToast.show({
-            color: 'red',
-            title: 'Error',
+          iziToast.error({
             message: 'Please choose a date in the future'
           });
           return;
