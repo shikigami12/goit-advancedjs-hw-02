@@ -110,6 +110,7 @@ class Timer {
         const dateTimePicker = this._timerContainer.querySelector('input#datetime-picker');
         if (dateTimePicker) {
           dateTimePicker.disabled = false;
+          this._isActive = false;
         }
         return;
       }
@@ -163,28 +164,6 @@ class Timer {
       }
     });
   }
-}
-
-/**
- * Converts milliseconds to an object containing days, hours, minutes, and seconds.
- * @function convertMs
- * @param {number} ms - The number of milliseconds to convert.
- * @returns {object} An object with the calculated days, hours, minutes, and seconds.
- * @property {number} days The number of full days.
- * @property {number} hours The remaining hours.
- * @property {number} minutes The remaining minutes.
- * @property {number} seconds The remaining seconds.
- */
-function convertMs(ms) {
-  const second = 1000;
-  const minute = second * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
-  const days = Math.floor(ms / day);
-  const hours = Math.floor((ms % day) / hour);
-  const minutes = Math.floor(((ms % day) % hour) / minute);
-  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-  return { days, hours, minutes, seconds };
 }
 
 const timer = new Timer('div.timer-wrapper');
